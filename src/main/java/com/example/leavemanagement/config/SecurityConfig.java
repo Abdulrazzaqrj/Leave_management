@@ -44,7 +44,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-                "https://YOUR-VERCEL-DOMAIN.vercel.app"
+                "https://leave-management-frontend-abdulrazz-three.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(

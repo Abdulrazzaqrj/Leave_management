@@ -3,6 +3,9 @@
 // GLOBAL VARIABLES
 // ==========================================
 
+// Backend API URL (Render)
+const API_BASE_URL = "https://leave-management-5ss0.onrender.com";
+
 let currentUser = null;
 let allLeaves = [];
 let allEmployees = [];
@@ -30,12 +33,11 @@ function toast(message, error = false) {
 // ==========================================
 // API FUNCTION
 // ==========================================
-
 async function api(url, options = {}) {
 
-    const response = await fetch(url, {
+    const response = await fetch(`${API_BASE_URL}${url}`, {
         ...options,
-        credentials: "same-origin",
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
             ...(options.headers || {})
@@ -60,7 +62,6 @@ async function api(url, options = {}) {
 
     return data;
 }
-
 
 // ==========================================
 // HTML ESCAPING
@@ -247,7 +248,14 @@ const pageTitles = {
 };
 
 
+
+let sidebarInitialized = false;
+
 function initializeSidebar() {
+
+    if (sidebarInitialized) {
+        return;
+    }
 
     document.querySelectorAll(".nav-link").forEach(link => {
 
@@ -263,7 +271,9 @@ function initializeSidebar() {
 
     });
 
+    sidebarInitialized = true;
 }
+
 
 
 function openPage(page) {

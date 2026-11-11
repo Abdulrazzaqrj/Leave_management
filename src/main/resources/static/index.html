@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TeamHub - Leave Management System</title>
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+<div class="shell">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside>
+
+        <h2>✳ TeamHub</h2>
+
+        <nav id="sidebarNav">
+
+            <a href="#dashboard"
+               class="nav-link active"
+               data-page="dashboard">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="#inbox"
+               class="nav-link"
+               data-page="inbox">
+                <span>✉</span>
+                Inbox
+            </a>
+
+            <a href="#calendar"
+               class="nav-link"
+               data-page="calendar">
+                <span>▦</span>
+                Calendar
+            </a>
+
+            <a href="#employees"
+               class="nav-link manager-only"
+               data-page="employees"
+               hidden>
+                <span>♙</span>
+                Employees
+            </a>
+
+            <a href="#attendance"
+               class="nav-link"
+               data-page="attendance">
+                <span>◷</span>
+                Attendance
+            </a>
+
+            <a href="#performance"
+               class="nav-link"
+               data-page="performance">
+                <span>↗</span>
+                Performance
+            </a>
+
+            <a href="#payroll"
+               class="nav-link"
+               data-page="payroll">
+                <span>₹</span>
+                Payroll
+            </a>
+
+            <a href="#leave"
+               class="nav-link"
+               data-page="leave">
+                <span>▣</span>
+                Leave Management
+            </a>
+
+        </nav>
+
+        <p class="side-note">
+            Leave requests made simple.
+        </p>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main>
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div>
+
+                <h1 id="pageTitle">Dashboard</h1>
+
+                <small id="breadcrumb">
+                    Dashboard / Overview
+                </small>
+
+            </div>
+
+            <div id="userArea"></div>
+
+        </header>
+
+
+        <!-- ================= LOGIN SECTION ================= -->
+
+        <section id="login" class="panel login">
+
+            <h2>Welcome back</h2>
+
+            <p>Sign in to manage your leave.</p>
+
+            <form id="loginForm">
+
+                <input
+                        type="email"
+                        name="email"
+                        placeholder="Email address"
+                        autocomplete="username"
+                        required
+                >
+
+                <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        required
+                >
+
+                <button type="submit">
+                    Sign in
+                </button>
+
+            </form>
+
+            <small>
+                Demo employee:
+                davis@company.com / Employee@123
+
+                <br>
+
+                Demo manager:
+                manager@company.com / Manager@123
+            </small>
+
+        </section>
+
+
+        <!-- ================= APPLICATION ================= -->
+
+        <section id="app" hidden>
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <section
+                    id="dashboardPage"
+                    class="page-section"
+                    data-section="dashboard"
+            >
+
+                <h2>Welcome to TeamHub</h2>
+
+                <p class="muted">
+                    Here's your leave management overview.
+                </p>
+
+                <div class="cards" id="summary"></div>
+
+                <div class="panel">
+
+                    <h3>Leave overview</h3>
+
+                    <div id="overview"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= INBOX ================= -->
+
+            <section
+                    id="inboxPage"
+                    class="page-section"
+                    data-section="inbox"
+                    hidden
+            >
+
+                <div class="panel">
+
+                    <h3>Inbox</h3>
+
+                    <p class="muted">
+                        View pending leave requests and updates.
+                    </p>
+
+                    <div id="inboxContent"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CALENDAR ================= -->
+
+            <section
+                    id="calendarPage"
+                    class="page-section"
+                    data-section="calendar"
+                    hidden
+            >
+
+                <div class="panel">
+
+                    <h3>Leave Calendar</h3>
+
+                    <p class="muted">
+                        View employee leave dates and statuses.
+                    </p>
+
+                    <div id="calendarContent"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= EMPLOYEES ================= -->
+
+            <section
+                    id="employeesPage"
+                    class="page-section"
+                    data-section="employees"
+                    hidden
+            >
+
+                <div class="panel">
+
+                    <h3>Employees & Leave Balances</h3>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                            <tr>
+                                <th>Employee</th>
+                                <th>Email</th>
+                                <th>Annual</th>
+                                <th>Sick</th>
+                                <th>Other</th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody id="employeeRows"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ATTENDANCE ================= -->
+
+            <section
+                    id="attendancePage"
+                    class="page-section"
+                    data-section="attendance"
+                    hidden
+            >
+
+                <div class="panel">
+
+                    <h3>Attendance</h3>
+
+                    <p class="muted">
+                        View approved leave records.
+                    </p>
+
+                    <div id="attendanceContent"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PERFORMANCE ================= -->
+
+            <section
+                    id="performancePage"
+                    class="page-section"
+                    data-section="performance"
+                    hidden
+            >
+
+                <div class="panel">
+
+                    <h3>Performance Overview</h3>
+
+                    <p class="muted">
+                        Leave request statistics.
+                    </p>
+
+                    <div id="performanceContent"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PAYROLL ================= -->
+
+            <section
+                    id="payrollPage"
+                    class="page-section"
+                    data-section="payroll"
+                    hidden
+            >
+
+                <div class="panel">
+
+                    <h3>Payroll & Leave Balance</h3>
+
+                    <p class="muted">
+                        View leave balance information.
+                    </p>
+
+                    <div id="payrollContent"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LEAVE MANAGEMENT ================= -->
+
+            <section
+                    id="leavePage"
+                    class="page-section"
+                    data-section="leave"
+                    hidden
+            >
+
+                <!-- LEAVE APPLICATION -->
+
+                <div class="grid">
+
+                    <section class="panel">
+
+                        <h3 id="formTitle">
+                            Apply for leave
+                        </h3>
+
+                        <form id="leaveForm">
+
+                            <label>
+                                Leave type
+
+                                <select name="type" required>
+
+                                    <option value="ANNUAL">
+                                        Annual leave
+                                    </option>
+
+                                    <option value="SICK">
+                                        Sick leave
+                                    </option>
+
+                                    <option value="OTHER">
+                                        Other leave
+                                    </option>
+
+                                </select>
+
+                            </label>
+
+
+                            <div class="two">
+
+                                <label>
+                                    Start date
+
+                                    <input
+                                            type="date"
+                                            name="startDate"
+                                            required
+                                    >
+
+                                </label>
+
+
+                                <label>
+                                    End date
+
+                                    <input
+                                            type="date"
+                                            name="endDate"
+                                            required
+                                    >
+
+                                </label>
+
+                            </div>
+
+
+                            <label>
+                                Reason
+
+                                <textarea
+                                        name="reason"
+                                        required
+                                        maxlength="1000"
+                                        placeholder="Tell us why you need leave"
+                                ></textarea>
+
+                            </label>
+
+
+                            <button type="submit">
+                                Submit request
+                            </button>
+
+                        </form>
+
+                    </section>
+
+
+                    <!-- LEAVE OVERVIEW -->
+
+                    <section class="panel">
+
+                        <h3>Leave overview</h3>
+
+                        <div id="leaveOverview"></div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- LEAVE HISTORY -->
+
+                <section class="panel">
+
+                    <div class="table-head">
+
+                        <h3 id="historyTitle">
+                            My leave history
+                        </h3>
+
+                        <select id="statusFilter">
+
+                            <option value="ALL">
+                                All statuses
+                            </option>
+
+                            <option value="PENDING">
+                                Pending
+                            </option>
+
+                            <option value="APPROVED">
+                                Approved
+                            </option>
+
+                            <option value="REJECTED">
+                                Rejected
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                            <tr>
+                                <th>Employee</th>
+                                <th>Type</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Days</th>
+                                <th>Reason</th>
+                                <th>Status / Action</th>
+                            </tr>
+
+                            </thead>
+
+                            <tbody id="leaveRows"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================= NOTIFICATION ================= -->
+
+        <div
+                id="toast"
+                role="status"
+                aria-live="polite"
+        ></div>
+
+
+    </main>
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="/app.js"></script>
+
+</body>
+
+</html>

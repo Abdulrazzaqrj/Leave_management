@@ -1,0 +1,557 @@
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #e4efec;
+    color: #183b35;
+    font: 14px Arial, sans-serif;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ==============================
+   MAIN LAYOUT
+============================== */
+
+.shell {
+    max-width: 1450px;
+    margin: 28px auto;
+    background: #f8faf9;
+    min-height: calc(100vh - 56px);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 35px #173e3215;
+}
+
+/* ==============================
+   SIDEBAR
+============================== */
+
+aside {
+    background: white;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+aside h2 {
+    font-size: 21px;
+    color: #168f78;
+    margin: 0 0 35px;
+}
+
+nav {
+    display: grid;
+    gap: 8px;
+}
+
+/* Sidebar navigation links */
+
+nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 12px;
+    border-radius: 10px;
+    color: #63756f;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+nav .nav-link:hover {
+    background: #e8f6f2;
+    color: #168f78;
+}
+
+nav .nav-link.active {
+    background: #20b997;
+    color: white;
+    font-weight: bold;
+}
+
+/* Sidebar icons */
+
+nav .nav-link span {
+    padding: 0;
+    color: inherit;
+    font-size: 17px;
+}
+
+/* Manager-only navigation */
+
+.manager-only[hidden] {
+    display: none !important;
+}
+
+/* Sidebar bottom note */
+
+.side-note {
+    margin-top: auto;
+    background: #e8f6df;
+    padding: 18px;
+    border-radius: 14px;
+    color: #47734d;
+    line-height: 1.6;
+}
+
+/* ==============================
+   MAIN CONTENT
+============================== */
+
+main {
+    padding: 28px;
+    min-width: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0 0 6px;
+}
+
+header small {
+    color: #7b918a;
+}
+
+#userArea {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #183b35;
+}
+
+/* ==============================
+   PAGE SECTIONS
+============================== */
+
+.page-section {
+    display: block;
+    animation: pageFade 0.25s ease;
+}
+
+.page-section[hidden] {
+    display: none !important;
+}
+
+@keyframes pageFade {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   SUMMARY CARDS
+============================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.card,
+.panel {
+    background: white;
+    border: 1px solid #edf1ef;
+    border-radius: 14px;
+    padding: 19px;
+}
+
+.card small {
+    color: #82928c;
+}
+
+.card strong {
+    display: block;
+    font-size: 30px;
+    margin: 10px 0;
+    color: #145d50;
+}
+
+/* ==============================
+   PANELS AND GRID
+============================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.panel {
+    margin-bottom: 16px;
+}
+
+h3 {
+    margin: 0 0 16px;
+    font-size: 17px;
+}
+
+/* ==============================
+   FORMS
+============================== */
+
+form {
+    display: grid;
+    gap: 12px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #dce6e2;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    color: #183b35;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #20b997;
+    box-shadow: 0 0 0 2px #20b99720;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    color: #61756e;
+}
+
+.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+textarea {
+    min-height: 75px;
+    resize: vertical;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+button {
+    border: 0;
+    border-radius: 9px;
+    background: #20b997;
+    color: white;
+    padding: 12px 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #138d75;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==============================
+   LOGIN
+============================== */
+
+.login {
+    max-width: 430px;
+    margin: 70px auto;
+}
+
+.login p {
+    color: #71847d;
+}
+
+.login small {
+    line-height: 1.8;
+    color: #6b8178;
+}
+
+/* ==============================
+   TABLES
+============================== */
+
+.table-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.table-head select {
+    max-width: 170px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 10px;
+    border-bottom: 1px solid #edf1ef;
+    font-size: 13px;
+}
+
+th {
+    color: #80918b;
+    font-weight: 600;
+}
+
+/* ==============================
+   LEAVE STATUS
+============================== */
+
+.status {
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.PENDING {
+    background: #fff2d5;
+    color: #986b0b;
+}
+
+.APPROVED {
+    background: #dff5eb;
+    color: #16815e;
+}
+
+.REJECTED {
+    background: #ffe5e5;
+    color: #bd4545;
+}
+
+/* ==============================
+   MANAGER ACTIONS
+============================== */
+
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.actions button {
+    padding: 7px 9px;
+    font-size: 11px;
+}
+
+.actions .reject {
+    background: #df6262;
+}
+
+.actions .reject:hover {
+    background: #bd4545;
+}
+
+/* ==============================
+   OVERVIEW
+============================== */
+
+.muted {
+    color: #81928b;
+}
+
+.bar {
+    height: 9px;
+    background: #eaf1ee;
+    border-radius: 9px;
+    margin: 8px 0 14px;
+    overflow: hidden;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    background: #20b997;
+    border-radius: 9px;
+}
+
+/* ==============================
+   DASHBOARD / OTHER MODULES
+============================== */
+
+#inboxContent,
+#calendarContent,
+#attendanceContent,
+#performanceContent,
+#payrollContent,
+#leaveOverview {
+    color: #526b63;
+    line-height: 1.7;
+}
+
+.module-item {
+    padding: 14px;
+    margin-bottom: 10px;
+    border: 1px solid #edf1ef;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.module-item:last-child {
+    margin-bottom: 0;
+}
+
+.module-item strong {
+    color: #145d50;
+}
+
+.module-item small {
+    display: block;
+    color: #81928b;
+    margin-top: 5px;
+}
+
+/* ==============================
+   NOTIFICATION
+============================== */
+
+#toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    background: #173f36;
+    color: white;
+    display: none;
+    max-width: 360px;
+    z-index: 1000;
+    box-shadow: 0 5px 20px #0002;
+}
+
+#toast.error {
+    background: #a93636;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 900px) {
+
+    .shell {
+        margin: 0;
+        border-radius: 0;
+        grid-template-columns: 1fr;
+    }
+
+    aside {
+        display: block;
+        padding: 15px;
+    }
+
+    aside h2 {
+        margin-bottom: 15px;
+    }
+
+    nav {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    nav .nav-link {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .side-note {
+        display: none;
+    }
+
+    main {
+        padding: 16px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .two {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .table-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #userArea {
+        flex-wrap: wrap;
+    }
+
+    .login {
+        margin: 30px auto;
+    }
+
+    #toast {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        max-width: none;
+    }
+}

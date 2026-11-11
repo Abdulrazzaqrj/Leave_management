@@ -4,7 +4,7 @@
 // ==========================================
 
 // Backend API URL (Render)
-const API_BASE_URL = "https://leave-management-5ss0.onrender.com";
+const API_BASE_URL = "https://leave-management-abdulrazzaq.onrender.com";
 
 let currentUser = null;
 let allLeaves = [];
